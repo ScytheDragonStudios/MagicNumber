@@ -19,10 +19,12 @@ public class MagicNumber : MonoBehaviour
 
     void StartGame()
     {
+        //Variables updated for game
         max = 1000;
         min = 1;
         guess = 500;
 
+        //Console log to show the game progression and play
         Debug.Log("Welcome . . . to the Magic Number!");
         Debug.Log("Do you believe that a mere program such as I can read your mind?");
         Debug.Log("I'm going to prove to you that I can!");
@@ -30,12 +32,15 @@ public class MagicNumber : MonoBehaviour
         Debug.Log("Don't tell me what it is though! That's the fun!");
         Debug.Log("Is your number Higher or lower than: " + guess + "?");
         Debug.Log("Push up = Higher, Push down = Lower, Push Enter = Correct");
+
+        //Make max available to divide for odd number guesses
         max = max + 1;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Input functions for game play
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             min = guess;
@@ -53,10 +58,16 @@ public class MagicNumber : MonoBehaviour
             Debug.Log("I told you I could read your mind!");
             Debug.Log("Well, after a few tries, at least. . .");
             Debug.Log("I got it right in " + guesses + " tries.");
+            Debug.Log("***************************************");
+            StartGame();
+        }
+        else
+        {
+            Debug.Log("Sorry, that is not an accepted input. Try again.");
         }
     }
 
-    //Next Guess function, simplified and removed from main
+    //NextGuess function, to declutter StartGame function
     void NextGuess()
     {
         guesses++;
