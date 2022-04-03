@@ -38,22 +38,29 @@ public class MagicNumber : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            guesses++;
             min = guess;
-            guess = (max + min) / 2;
             Debug.Log("I'll need to guess lower then.");
+            NextGuess();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            guesses++;
             max = guess;
-            guess = (max + min) / 2;
             Debug.Log("I'll need to guess higher then.");
+            NextGuess();
         }
         else if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log("I told you I could read your mind!");
             Debug.Log("Well, after a few tries, at least. . .");
+            Debug.Log("I got it right in " + guesses + " tries.");
         }
+    }
+
+    //Next Guess function, simplified and removed from main
+    void NextGuess()
+    {
+        guesses++;
+        guess = (max + min) / 2;
+        Debug.Log("Is it higher or lower than: " + guess + "?");
     }
 }
