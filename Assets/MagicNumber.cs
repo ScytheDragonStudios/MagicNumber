@@ -9,6 +9,7 @@ public class MagicNumber : MonoBehaviour
     int max;
     int min;
     int guess;
+    int guesses;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,24 @@ public class MagicNumber : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            guesses++;
+            min = guess;
+            guess = (max + min) / 2;
+            Debug.Log("I'll need to guess lower then.");
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            guesses++;
+            max = guess;
+            guess = (max + min) / 2;
+            Debug.Log("I'll need to guess higher then.");
+        }
+        else if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log("I told you I could read your mind!");
+            Debug.Log("Well, after a few tries, at least. . .");
+        }
     }
 }
